@@ -1,3 +1,6 @@
 class Question(){
-
+  contructor(){
+  }
+  addToDOM(){
+  }
 }
