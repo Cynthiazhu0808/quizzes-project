@@ -1,4 +1,9 @@
 class Question {
+    constructor(questionData, questionNumber) {
+        // Create a DOM structure and store it in an instance variable
+        this.domElement = this.createQuestionDOM(questionData, questionNumber);
+    }
+    
     let question=null;
     let choices=null;
     let correct=null;
@@ -9,6 +14,6 @@ class Question {
         this.correct = correct;
         this.selected = null;
     }
-
-     
 }
+
+
