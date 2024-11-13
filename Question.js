@@ -30,6 +30,8 @@ class Question {
         
         // Append the grade button to the question container
         questionDiv.append(gradeButton).append('<br>');
+        let questionText=$('<p>').addClass('questionText');
+        questionDiv.append(questionText);
         this.questionDiv=questionDiv;
     };
 
