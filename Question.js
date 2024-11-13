@@ -16,10 +16,6 @@
     }
 }*/
 
-// Question.js
-
-// Question.js
-
 class Question {
     constructor(questionData, questionNumber) {
         // Create a simple HTML structure for the question and store it in an instance variable
