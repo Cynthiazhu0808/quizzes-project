@@ -18,73 +18,54 @@
 
 // Question.js
 
+// Question.js
+
 class Question {
     constructor(questionData, questionNumber) {
-        // Create a DOM structure and store it in an instance variable
+        // Create a simple HTML structure for the question and store it in an instance variable
         this.domElement = this.createQuestionDOM(questionData, questionNumber);
     }
 
     // Method to create the HTML structure for a question
     createQuestionDOM(questionData, questionNumber) {
-        // Create a main container div for the question
-        const questionDiv = document.createElement('div');
-        questionDiv.classList.add('question');
+        // Main question container
+        const questionDiv = $('<div>').addClass('question');
 
-        // Add a question paragraph
-        const questionParagraph = document.createElement('p');
-        questionParagraph.textContent = questionData.Q;
-        questionDiv.appendChild(questionParagraph);
+        // Paragraph for the question text
+        const questionText = $('<p>').text(questionData.Q);
+        questionDiv.append(questionText);
 
         // Create radio button options (A, B, C, D)
         ['A', 'B', 'C', 'D'].forEach(option => {
-            // Create a label for each option
-            const label = document.createElement('label');
-            label.textContent = questionData[option];
+            // Label for each option
+            const label = $('<label>').text(questionData[option]);
 
-            // Create the radio button input
-            const radioButton = document.createElement('input');
-            radioButton.type = 'radio';
-            radioButton.name = `Q${questionNumber}`; // Unique name for each question's options
-            radioButton.value = option;
+            // Radio button input
+            const radioButton = $('<input>')
+                .attr('type', 'radio')
+                .attr('name', `Q${questionNumber}`) // unique name for each question
+                .val(option);
 
-            // Append radio button to label, then label to questionDiv
+            // Add radio button inside label, and then label to the question container
             label.prepend(radioButton);
-            questionDiv.appendChild(label);
-
-            // Line break for layout
-            questionDiv.appendChild(document.createElement('br'));
+            questionDiv.append(label).append('<br>'); // add a line break after each label
         });
 
-        // Create a "Grade" button for grading this question
-        const gradeButton = document.createElement('button');
-        gradeButton.textContent = 'Grade';
-        gradeButton.classList.add('grade-button');
-        gradeButton.dataset.answer = questionData.ANS; // Store correct answer in data attribute
-        questionDiv.appendChild(gradeButton);
+        // "Grade" button with data-answer attribute to store the correct answer
+        const gradeButton = $('<button>')
+            .addClass('grade-button')
+            .text('Grade')
+            .attr('data-answer', questionData.ANS);
+        
+        // Append the grade button to the question container
+        questionDiv.append(gradeButton);
 
-        return questionDiv; // Return the constructed DOM structure
+        // Return the completed question DOM element
+        return questionDiv;
     }
 
-    // Method to add the question to the DOM at a specified destination
+    // Method to add the question to a specified container on the page
     addToDOM(destination) {
-        $(destination).append(this.domElement); // Append the stored DOM element to the destination
+        $(destination).append(this.domElement);
     }
 }
-
-// Main driver script to use the questions array and add questions to the page
-$(document).ready(() => {
-    // Assuming there is a container in the HTML with class 'quiz-questions'
-    const container = $('.quiz-questions');
-
-    // Loop through the questions array and create a Question instance for each one
-    questions.forEach((questionData, index) => {
-        // Create a new Question object
-        const question = new Question(questionData, index);
-        
-        // Add the question to the DOM
-        question.addToDOM(container);
-    });
-});
-
-
-
