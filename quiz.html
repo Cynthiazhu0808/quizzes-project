@@ -9,24 +9,22 @@
     <title>Quizzes Project HTML</title>
 </head>
 <body>
-
-<main>
-    <h1>Classic Movie Quiz</h1>
-    <div class="quiz-grid">
-        <div id="left-column" class="quiz-column"></div>
-        <div id="right-column" class="quiz-column"></div>
+    <div class="quiz-container">
+        <h1>Movie Quiz</h1>
+        <div class="quiz-questions">
+            <!-- JavaScript will dynamically insert questions here -->
         </div>
+        <button id="gradeButton">Grade All Questions</button>
     </div>
-    
 
-</main>
-
-<!-- JavaScript at the bottom -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cs.wellesley.edu/~anderson/js/bounds/bounds-plugin.js"></script>
-<script src="movie-questions.js"></script>
-<script src="Question.js"></script>
-<script src="quiz.js"></script>
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Questions Array -->
+    <script src="movie-questions.js"></script>
+    <!-- Question Class Script -->
+    <script src="Question.js"></script>
+    <!-- Quiz Initialization Script -->
+    <script src="quiz.js"></script>
 
 </body>
 </html>
