@@ -13,6 +13,7 @@ body {
 }
 
 .quiz-container {
+    display: grid;
     background: #fff;
     padding: 20px;
     width: 80%;
