@@ -57,27 +57,4 @@ $(document).ready(function() {
             $(this).text('Wrong!');
         }
     });
-
-    // Event handler for grading all questions at once
-    $('#gradeButton').click(function() {
-        // Loop through each question and grade it
-        $('.question').each(function() {
-            const questionDiv = $(this);
-            const gradeButton = questionDiv.find('.grade-button');
-            const selectedAnswer = questionDiv.find('input[type="radio"]:checked').val();
-            const correctAnswer = gradeButton.data('answer');
-
-            // Remove previous result styles
-            questionDiv.removeClass('correct wrong');
-
-            // Check if the selected answer is correct and update button text
-            if (selectedAnswer === correctAnswer) {
-                questionDiv.addClass('correct');
-                gradeButton.text('Correct!');
-            } else {
-                questionDiv.addClass('wrong');
-                gradeButton.text('Wrong!');
-            }
-        });
-    });
 });
