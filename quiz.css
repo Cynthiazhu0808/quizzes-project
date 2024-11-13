@@ -1,3 +1,4 @@
+/* Basic resets and global styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -17,7 +18,7 @@ body {
     background: #fff;
     padding: 20px;
     width: 80%;
-    max-width: 600px;
+    max-width: 700px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     text-align: center;
@@ -30,29 +31,44 @@ body {
     margin: 20px 0;
 }
 
-.quiz-questions .question {
-    background: #eaeaea;
+.question {
+    background-color: #eaeaea;
     padding: 15px;
     border-radius: 8px;
     border: 2px solid black;
     white-space: nowrap;
 }
 
+.question p {
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* Button styles */
 button {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 button:hover {
     background-color: #45a049;
 }
 
-/* Classes for correct and wrong answers */
+/* Styles for grading states */
 .correct {
     border-color: green;
     background-color: #d4edda;
@@ -63,7 +79,27 @@ button:hover {
     background-color: #f8d7da;
 }
 
-/* Media query for smaller screens (one-column layout) */
+.correct button,
+.wrong button {
+    background-color: #6c757d; /* Gray out buttons in graded state */
+    cursor: default;
+}
+
+.correct button:hover,
+.wrong button:hover {
+    background-color: #6c757d;
+}
+
+/* Feedback text for graded questions */
+.correct .grade-button {
+    color: green;
+}
+
+.wrong .grade-button {
+    color: red;
+}
+
+/* Responsive layout for smaller screens */
 @media (max-width: 768px) {
     .quiz-questions {
         grid-template-columns: 1fr;
