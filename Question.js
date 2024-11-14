@@ -1,42 +1,42 @@
-class Question {
-    constructor(questionData, questionNumber) {
-        this.questionData=questionData;
-        this.questionNumber=questionNumber;
-        let questionDiv = $('<div>').addClass('question'); //create a div with class question
+// Question.js
 
-        let questionText = $('<p>').text(questionData.Q);
+class Question {
+    constructor(questionData, questionNum) {
+        this.domElement = this.createQuestionDOM(questionData, questionNum);
+    }
+
+    createQuestionDOM(questionData, questionNum) {
+        const questionDiv = $('<div>').addClass('question');
+
+        // Paragraph for the question text
+        const questionText = $('<p>').text(questionData.Q);
         questionDiv.append(questionText);
 
+        // Create radio button options (A, B, C, D)
         ['A', 'B', 'C', 'D'].forEach(option => {
-            // create a label with the text of each option
-            let label = $('<label>').text(questionData[option]);
+            const label = $('<label>').text(questionData[option]);
 
-            // create a radio button, with <input> tag, type as radio, and value set to be option
-            let radioButton = $('<input>')
+            const radioButton = $('<input>')
                 .attr('type', 'radio')
-                .attr('name', `Q${questionNumber}`) // unique name for each question
+                .attr('name', `Q${questionNum}`) 
                 .val(option);
 
-            // Add radio button inside label, and then add label to the questionDiv
-            label.append(radioButton);
-            questionDiv.append(label);
+            // Add radio button inside label, and then label to the question container
+            label.prepend(radioButton);
+            questionDiv.append(label)
         });
 
-        // "Grade" button with data-answer attribute to store the correct answer
-        let gradeButton = $('<button>')
+        // grade button
+        const gradeButton = $('<button>')
             .addClass('grade-button')
             .text('Grade')
             .attr('data-answer', questionData.ANS);
         
-        // Append the grade button to the question container
-        questionDiv.append(gradeButton).append('<br>');
-        let questionText=$('<p>').addClass('questionText');
-        questionDiv.append(questionText);
-        this.questionDiv=questionDiv;
-    };
+        questionDiv.append(gradeButton);
+        return questionDiv;
+    }
 
-    // Method to add the question to a specified container on the page
-    addToDOM(location) {
-        $(location).append(this.questionDiv);
+    addToDOM(destination) {
+        $(destination).append(this.domElement);
     }
 }
