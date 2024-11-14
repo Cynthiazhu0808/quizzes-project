@@ -12,16 +12,6 @@ body {
     align-items: center;
 }
 
-.quiz-container {
-    background: #fff;
-    padding: 20px;
-    width: 80%;
-    max-width: 700px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    text-align: center;
-}
-
 .quiz-questions {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -34,7 +24,7 @@ body {
     padding: 15px;
     border-radius: 8px;
     border: 2px solid black;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
 }
 
 .question p {
@@ -62,10 +52,6 @@ button {
     margin-top: 10px;
 }
 
-button:hover {
-    background-color: #45a049;
-}
-
 /* Styles for grading states */
 .correct {
     border-color: green;
@@ -81,20 +67,6 @@ button:hover {
 .wrong button {
     background-color: #6c757d; /* Gray out buttons in graded state */
     cursor: default;
-}
-
-.correct button:hover,
-.wrong button:hover {
-    background-color: #6c757d;
-}
-
-/* Feedback text for graded questions */
-.correct .grade-button {
-    color: green;
-}
-
-.wrong .grade-button {
-    color: red;
 }
 
 /* Responsive layout for smaller screens */
