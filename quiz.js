@@ -1,3 +1,5 @@
+'use strict';
+
 $(document).ready(() => {
     // name the container with class 'quiz-questions' as container
     const container = $('.quiz-questions');
@@ -22,17 +24,16 @@ $(document).ready(() => {
         const correctAnswer = gradeButton.data('answer');
 
         // Clear previous result classes before grading
-        questionDiv=gradeButton.closest('.question');
-        resulttext=questionDiv.find('.resultText');
+        let questionDiv=gradeButton.closest('.question');
+        let resulttext=questionDiv.find('.resultText');
         questionDiv.removeClass('correct wrong');
 
-        // Check if the selected answer is correct
         if (selectedAnswer === correctAnswer) {
-            // Mark as correct if the answer is right
+            // if the answer is right
             questionDiv.addClass('correct');
             resulttext.text("Correct!");
         } else {
-            // Mark as wrong if the answer is incorrect
+            // if the answer is incorrect
             questionDiv.addClass('wrong');
             resulttext.text("Wrong!");
         }
